@@ -23,7 +23,8 @@
         "hyprland/workspaces"
     ],
     "modules-right": [
-        "mpd", 
+        "mpd",
+        "hyprland/language",
         "pulseaudio", 
         "network", 
         "cpu", 
