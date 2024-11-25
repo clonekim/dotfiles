@@ -4,6 +4,7 @@ Hyprland 설정
 
 ## Prerequiste
 
+* arc-gtk-theme
 * hyprland
 * hyprpaper
 * hyprlock
@@ -22,7 +23,7 @@ Hyprland 설정
 * ttf-fira-sans 
 * ttf-fira-code 
 * ttf-firacode-nerd
-* ttf-d2coding-nerd
+* ttf-jetbrains-mono-nerd
 * fastfetch
 * fuse2
 * gtk4
