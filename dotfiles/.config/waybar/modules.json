@@ -105,7 +105,7 @@
     }, 
 
     "hyprland/language": {
-        "format": "/ K {short}"
+        "format": "{short}"
     },
 
     // Group Hardware
