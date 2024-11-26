@@ -1,4 +1,5 @@
-# hyprland
+# My Dotfiles
+
 Hyprland 설정
 > Arch(XFCE4) 기반에서 작성 했음 
 
