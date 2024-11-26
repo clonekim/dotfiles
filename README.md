@@ -4,7 +4,6 @@ Hyprland 설정
 
 ## Prerequiste
 
-* arc-gtk-theme
 * hyprland
 * hyprpaper
 * hyprlock
@@ -83,3 +82,14 @@ monitor=DP-2,1920x1080,auto,1,transform,1
 > 변경 후
 `bind = $mainMod, D, exec, rofi -show drun # Open rofi`
 
+
+## Gsetting
+
+`gsetting set org.gnome.desktop.interface font-hinting "full"`
+`gsetting set org.gnome.desktop.interface font-antialiasing "grayscale"`
+`gsetting set org.gnome.desktop.interface font-name "나눔스퀘어 네오 9"`
+`gsetting set org.gnome.desktop.interface monospace-font-name "JetBrains Mono 9"`
+`gsetting set org.gnome.desktop.interface gtk-theme "Matcha-light-sea"`
+`gsetting set org.gnome.desktop.interface icon-theme "Papirus-Maia"`
+`gsetting set org.gnome.desktop.wm.preference theme "Matcha-light-sea"`
+`gsetting set org.gnome.desktop.wm.preference titlebar-font "나눔스퀘어 네오 9"`
