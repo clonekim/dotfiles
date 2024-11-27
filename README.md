@@ -98,3 +98,16 @@ monitor=DP-2,1920x1080,auto,1,transform,1
 `gsetting set org.gnome.desktop.interface icon-theme "Papirus-Maia"`  
 `gsetting set org.gnome.desktop.wm.preference theme "Matcha-light-sea"`  
 `gsetting set org.gnome.desktop.wm.preference titlebar-font "나눔스퀘어 네오 9"`  
+
+## fastfetch
+
+``` sh
+# -----------------------------------------------------
+# Fastfetch if in Hyprland
+# -----------------------------------------------------
+if [[ $(tty) == *"pts"* ]]; then
+    fastfetch
+else
+    echo
+    echo "Start Hyprland with command Hyprland"
+```
