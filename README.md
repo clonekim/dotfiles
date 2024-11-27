@@ -5,6 +5,7 @@ Hyprland 설정
 
 ## Prerequiste
 
+### 필수
 * hyprland
 * hyprpaper
 * hyprlock
@@ -20,22 +21,25 @@ Hyprland 설정
 * qt6-wayland
 * awesome-terminal-fonts
 * ttf-font-awesome
+* udiskie
+* brightnessctl
+* pamixer 
+* grim
+* cliphist
+* wl-clipboard
+
+### 옵션
 * ttf-fira-sans 
 * ttf-fira-code 
 * ttf-firacode-nerd
 * ttf-jetbrains-mono-nerd
+* thunar
 * fastfetch
 * fuse2
 * gtk4
 * libadwaita
 * jq
 * python-gobject
-* udiskie
-* brightnessctl
-* pamixer 
-* grim
-* wl-clipboard
-* thunar
 
 ## 로그인 
 

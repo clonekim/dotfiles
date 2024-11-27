@@ -201,5 +201,27 @@
             "deactivated": ""
         },
         "on-click-right": "hyprlock"        
+    },
+    // backlight:
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "scroll-step": 1
     }
 }

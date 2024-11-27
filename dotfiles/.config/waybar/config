@@ -33,6 +33,7 @@
         "battery", 
         "clock", 
         "tray",
+        "backlight",
         "custom/exit"
     ]
 }
