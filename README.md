@@ -110,4 +110,5 @@ if [[ $(tty) == *"pts"* ]]; then
 else
     echo
     echo "Start Hyprland with command Hyprland"
+fi
 ```
