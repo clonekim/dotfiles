@@ -1,0 +1,10 @@
+[user]
+	email = daehee.kim@innogrid.com
+	name = daehee.kim
+[credential]
+	helper = store
+[diff]
+    ignoreAllSpace = true
+    ignoreSpaceSpace = true
+[init]
+	defaultBranch = master
