@@ -1,0 +1,13 @@
+default-timeout=3000
+background-color=#2e3440E0
+text-color=#eceff4
+border-color=#81a1c1
+border-size=2
+padding=10
+margin=10
+icon-path=/usr/share/icons/Papirus/
+icons=1
+font=NanumSquareNeo 10
+
+[urgency=critical]
+default-timeout=5000

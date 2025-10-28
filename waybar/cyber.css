@@ -1,0 +1,314 @@
+/* 사이버펑크 색상 변수 */
+@define-color cyber-bg #0a0a0f;
+@define-color cyber-surface #1a1a2e;
+@define-color cyber-cyan #00ffff;
+@define-color cyber-pink #ff00ff;
+@define-color cyber-green #00ff80;
+@define-color cyber-purple #8000ff;
+@define-color cyber-dark #050510;
+
+* {
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+
+#waybar {
+  font-family: "GohuFont 14 Nerd Font", FontAwesome, monospace;
+  font-size: 1.2em;
+  font-weight: 400;
+  color: @cyber-cyan;
+  background: linear-gradient(90deg,
+    rgba(10, 10, 15, 0.8) 0%,
+    rgba(26, 26, 46, 0.9) 50%,
+    rgba(10, 10, 15, 0.8) 100%
+  );
+  box-shadow: 0 2px 10px rgba(0, 255, 255, 0.2);
+  border-bottom: 0px solid #ffffff;
+}
+
+/* 워크스페이스 */
+#workspaces {
+  background: rgba(26, 26, 46, 0.6);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+#workspaces button {
+  margin: 2px;
+  padding: 4px 8px;
+  color: rgba(0, 255, 255, 0.7);
+  background: transparent;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#workspaces button.visible {
+  color: @cyber-cyan;
+  text-shadow: 0 0 5px @cyber-cyan;
+}
+
+#workspaces button.active {
+  font-size: 1.1em;
+  font-weight: 800;
+  color: @cyber-pink;
+  border-radius: 27px;
+  background: linear-gradient(135deg,
+    rgba(255, 0, 255, 0.2) 0%,
+    rgba(128, 0, 255, 0.2) 100%
+  );
+  border: 1px solid rgba(255, 0, 255, 0.5);
+  text-shadow: 0 0 8px @cyber-pink;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+}
+
+#workspaces button.focused {
+  border-radius: 6px;
+  background: linear-gradient(135deg,
+    rgba(0, 255, 255, 0.2) 0%,
+    rgba(0, 255, 128, 0.2) 100%
+  );
+  border: 1px solid rgba(0, 255, 255, 0.4);
+  text-shadow: 0 0 5px @cyber-cyan;
+}
+
+#workspaces button.urgent {
+  color: #ff3030;
+  background: rgba(255, 48, 48, 0.2);
+  border: 1px solid #ff3030;
+  text-shadow: 0 0 10px #ff3030;
+  box-shadow: 0 0 15px rgba(255, 48, 48, 0.4);
+}
+
+#workspaces button:hover {
+  color: @cyber-green;
+  background: rgba(0, 255, 128, 0.1);
+  border: 1px solid rgba(0, 255, 128, 0.3);
+  text-shadow: 0 0 5px @cyber-green;
+}
+
+/* 트레이 */
+#tray {
+  font-size: 1.0em;
+  margin: 4px;
+  border-radius: 8px;
+  background: linear-gradient(135deg,
+    rgba(26, 26, 46, 0.8) 0%,
+    rgba(10, 10, 15, 0.8) 100%
+  );
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+#tray * {
+  padding: 4px 8px;
+  color: @cyber-cyan;
+  text-shadow: 0 0 3px @cyber-cyan;
+}
+
+#tray *:hover {
+  color: @cyber-pink;
+  text-shadow: 0 0 5px @cyber-pink;
+}
+
+#tray > .needs-attention {
+    background: linear-gradient(135deg, #ff3030 0%, #ff6060 100%);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(255, 48, 48, 0.5);
+}
+
+/* 모든 상태 모듈들 */
+#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #clock, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #temperature, #language, #submap, #custom-capslock {
+  margin: 2px;
+  padding: 4px 8px;
+  background: linear-gradient(135deg,
+    rgba(26, 26, 46, 0.8) 0%,
+    rgba(10, 10, 15, 0.8) 100%
+  );
+  border-radius: 6px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  min-width: 20px;
+  color: @cyber-cyan;
+  text-shadow: 0 0 3px @cyber-cyan;
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+#mode:hover, #battery:hover, #cpu:hover, #memory:hover, #network:hover, #pulseaudio:hover, #idle_inhibitor:hover, #backlight:hover, #custom-storage:hover, #custom-updates:hover, #custom-weather:hover, #custom-mail:hover, #temperature:hover, #language:hover {
+  color: @cyber-pink;
+  border-color: rgba(255, 0, 255, 0.5);
+  text-shadow: 0 0 5px @cyber-pink;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+}
+
+#submap, #custom-capslock {
+  color: #ff3030;
+  background: linear-gradient(135deg,
+    rgba(255, 48, 48, 0.3) 0%,
+    rgba(255, 96, 96, 0.3) 100%
+  );
+  border: 1px solid #ff3030;
+  text-shadow: 0 0 8px #ff3030;
+  box-shadow: 0 0 15px rgba(255, 48, 48, 0.4);
+}
+
+/* 오디오 상태별 색상 */
+#pulseaudio.muted {
+  color: #606060;
+  text-shadow: 0 0 3px #606060;
+}
+
+#pulseaudio.bluetooth {
+  color: @cyber-purple;
+  text-shadow: 0 0 5px @cyber-purple;
+  border-color: rgba(128, 0, 255, 0.4);
+}
+
+/* 시계 스타일 (기존 유지) */
+#clock {
+    background: linear-gradient(135deg,
+        rgba(0, 255, 255, 0.1) 0%,
+        rgba(255, 0, 255, 0.1) 50%,
+        rgba(0, 255, 128, 0.1) 100%
+    );
+    color: #00ffff;
+    margin-left: 0px;
+    margin-right: 4px;
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 6px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 15px #00ffff,
+        0 0 20px #00ffff;
+    box-shadow:
+        0 0 10px rgba(0, 255, 255, 0.3),
+        inset 0 0 10px rgba(0, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* 시계 호버 효과 (기존 유지) */
+#clock:hover {
+    color: #ff00ff;
+    border-color: rgba(255, 0, 255, 0.5);
+    text-shadow:
+        0 0 5px #ff00ff,
+        0 0 10px #ff00ff,
+        0 0 15px #ff00ff,
+        0 0 20px #ff00ff;
+    box-shadow:
+        0 0 15px rgba(255, 0, 255, 0.5),
+        inset 0 0 15px rgba(255, 0, 255, 0.2);
+}
+
+#custom-exit {
+  margin: 2px;
+  padding: 4px 12px;
+  background: linear-gradient(135deg,
+    rgba(255, 48, 48, 0.3) 0%,
+    rgba(255, 96, 96, 0.3) 100%
+  );
+  border-radius: 6px;
+  border: 1px solid #ff3030;
+  color: #ff3030;
+  text-shadow: 0 0 5px #ff3030;
+  box-shadow: 0 0 10px rgba(255, 48, 48, 0.3);
+}
+
+#custom-exit:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg,
+    rgba(255, 48, 48, 0.6) 0%,
+    rgba(255, 96, 96, 0.6) 100%
+  );
+  box-shadow: 0 0 15px rgba(255, 48, 48, 0.5);
+}
+
+#temperature.critical {
+  color: #ff3030;
+  text-shadow: 0 0 8px #ff3030;
+  border-color: #ff3030;
+  background: rgba(255, 48, 48, 0.2);
+}
+
+#window {
+  font-size: 0.9em;
+  transition-property: all;
+  transition-duration: 0.3s;
+  color: @cyber-green;
+  text-shadow: 0 0 3px @cyber-green;
+  background: linear-gradient(135deg,
+    rgba(0, 255, 128, 0.1) 0%,
+    rgba(0, 255, 255, 0.1) 100%
+  );
+  border: 1px solid rgba(0, 255, 128, 0.3);
+  border-radius: 6px;
+  padding: 2px 8px;
+  margin: 2px;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+    border: none;
+}
+
+#language {
+ font-size: 0.9em;
+ font-weight: 500;
+ letter-spacing: 1px;
+}
+
+#taskbar {
+  background: linear-gradient(135deg,
+    rgba(26, 26, 46, 0.8) 0%,
+    rgba(10, 10, 15, 0.8) 100%
+  );
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+}
+
+/* 각 모듈별 개별 색상 */
+#cpu {
+    color: #00ff80;
+    text-shadow: 0 0 5px #00ff80;
+    border-color: rgba(0, 255, 128, 0.4);
+}
+
+#memory {
+    color: #8000ff;
+    text-shadow: 0 0 5px #8000ff;
+    border-color: rgba(128, 0, 255, 0.4);
+}
+
+#network {
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff;
+    border-color: rgba(0, 255, 255, 0.4);
+}
+
+#pulseaudio {
+    color: #ff8000;
+    text-shadow: 0 0 5px #ff8000;
+    border-color: rgba(255, 128, 0, 0.4);
+}
+
+#battery {
+    color: #80ff00;
+    text-shadow: 0 0 5px #80ff00;
+    border-color: rgba(128, 255, 0, 0.4);
+}
+
+#battery.warning {
+    color: #ffff00;
+    text-shadow: 0 0 8px #ffff00;
+    border-color: #ffff00;
+}
+
+#battery.critical {
+    color: #ff0080;
+    text-shadow: 0 0 10px #ff0080;
+    border-color: #ff0080;
+    background: rgba(255, 0, 128, 0.2);
+}

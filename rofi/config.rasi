@@ -1,0 +1,27 @@
+@theme "/usr/share/rofi/themes/arthur.rasi"
+
+configuration {
+    show-icons:                 true;
+}
+
+window {
+    width:                        600px;
+    border-radius: 4px;
+}
+
+inputbar {
+    enabled:                      true;
+    padding:                      10px;
+}
+
+listview {
+  padding: 14px;
+}
+
+element {
+  padding: 2px;
+}
+
+* {
+    font: "BlexMono Nerd Font 10";
+}
