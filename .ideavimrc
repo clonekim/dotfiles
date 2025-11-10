@@ -1,0 +1,60 @@
+Plug 'preservim/nerdtree'
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-exchange'
+
+set history=500
+set scrolloff=5
+set incsearch
+set hlsearch
+set showmatch
+set autoinent
+set exchange
+set ideajoin
+set clipboard+=unnamedplus
+
+let mapleader="\<Space>"
+
+syntax on
+map Q gq
+
+map <C-n> :NERDTree<cr>
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+map <leader><leader> :nohl<cr>
+
+nmap <leader>t :action ExpressionTypeInfo<cr>
+nmap <leader>wp :action ypeInfo<cr>
+
+map <leader>wv :action SplitVertically<cr>
+map <leader>wh :action SplitHorizontally<cr>
+map <leader>ww :action NextSplitter<cr>
+map <leader>wc :action ChangeSplitOrientation<cr>
+
+map <leader>bd :action CloseContent<cr>
+map <leader>bD :action CloseAllEditors<cr>
+map <leader>bb :action Switcher<cr>
+nnoremap <leader>bo :action FileStructurePopup<cr>
+nnoremap <leader>r :action RenameElement<cr>
+
+map <leader>fr :action RecentFiles<cr>
+nnoremap <leader>ff :action ReformatCode<cr>
+vmap     <leader>ff :action ReformatCode<cr>
+nmap <leader>fs :action SelectInProjectView<cr>
+map  <leader>fv :action ActivateProjectToolWindow<cr>
+
+nmap <leader>b[ :action Back<cr>
+nmap <leader>f :action Forward<cr>
+nmap <leader>pu :action Vcs.Push<cr>
+nmap <leader>gf :action GotoFile<cr>
+
+nmap gd :action GotoDeclaration<cr>
+nmap gi :action GotoImplementation<cr>
+nmap gt :action GotoTypeDeclaration<cr>
+
+map q :action CloseContent<cr>
+map Q :action CloseAllEditors<cr>

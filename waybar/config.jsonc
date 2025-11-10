@@ -12,7 +12,7 @@
     "backlight",
     "network",
     "custom/updates",
-    "custom/submap",
+    "hyprland/submap",
     "custom/capslock"
   ],
   "modules-center": [

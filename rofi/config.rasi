@@ -1,27 +1,182 @@
-@theme "/usr/share/rofi/themes/arthur.rasi"
+/*
+#  ____        __ _
+# |  _ \ ___  / _(_)
+# | |_) / _ \| |_| |
+# |  _ < (_) |  _| |
+# |_| \_\___/|_| |_|
+#
+# by Stephan Raabe (2023)
+# -----------------------------------------------------
+*/
 
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+
+/* ---- Configuration ---- */
 configuration {
+    modi:                       "drun,run";
+    font:                       "Fira Code 10";
     show-icons:                 true;
+	hover-select:               true;
+    me-select-entry:            "";
+    me-accept-entry:            "MousePrimary";
+    drun-display-format:        "{name}";
+
 }
 
+
+/* ---- Window ---- */
 window {
-    width:                        600px;
-    border-radius: 4px;
+    location: center;
+    anchor:   center;
+    width:                        400px;
+    x-offset:                     0px;
+    y-offset:                     65px;
+    spacing:                      0px;
+    padding:                      0px;
+    margin:                       0px;
+    border:                       2px;
+    cursor:                       "default";
+    transparency:                 "real";
+    fullscreen:                   false;
+    enabled:                      true;
+    border-radius:                0px;
 }
 
+/* ---- Mainbox ---- */
+mainbox {
+    enabled:                      true;
+    orientation:                  horizontal;
+    spacing:                      0px;
+    margin:                       0px;
+    children:                     ["listbox"];
+}
+
+/* ---- Imagebox ---- */
+imagebox {
+    padding:                      18px;
+    background-color:             transparent;
+    orientation:                  vertical;
+    children:                     [ "inputbar", "dummy", "mode-switcher" ];
+}
+
+/* ---- Listbox ---- */
+listbox {
+    spacing:                     20px;
+    background-color:            transparent;
+    orientation:                 vertical;
+    children:                    [ "inputbar", "message", "listview" ];
+}
+
+/* ---- Dummy ---- */
+dummy {
+    background-color:            transparent;
+}
+
+/* ---- Inputbar ---- */
 inputbar {
     enabled:                      true;
+    spacing:                      10px;
+    padding:                      15px;
+    border-radius:                0px;
+    children:                     [ "textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    enabled:                      true;
+    expand:                       false;
+    str:                          "";
+    background-color:             transparent;
+    text-color:                   inherit;
+}
+
+entry {
+    enabled:                      true;
+    background-color:             transparent;
+    text-color:                   inherit;
+    cursor:                       text;
+    placeholder:                  "Search";
+    placeholder-color:            inherit;
+}
+
+/* ---- Mode Switcher ---- */
+mode-switcher{
+    enabled:                      true;
+    spacing:                      20px;
+    background-color:             transparent;
+}
+
+button {
     padding:                      10px;
+    border-radius:                0px;
+    text-color:                   inherit;
+    cursor:                       pointer;
+    border:                       0px;
 }
 
+
+/* ---- Listview ---- */
 listview {
-  padding: 14px;
+    enabled:                      true;
+    columns:                      1;
+    lines:                        8;
+    cycle:                        true;
+    dynamic:                      true;
+    scrollbar:                    false;
+    layout:                       vertical;
+    reverse:                      false;
+    fixed-height:                 true;
+    fixed-columns:                true;
+    spacing:                      0px;
+    padding:                      10px;
+    margin:                       0px;
+    border:0px;
 }
 
+/* ---- Element ---- */
 element {
-  padding: 2px;
+    enabled:                      true;
+    padding:                      10px;
+    margin:                       5px;
+    cursor:                       pointer;
+    border-radius:                0px;
+    border:                       1px;
 }
 
-* {
-    font: "BlexMono Nerd Font 10";
+
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    size:                        60px;
+    cursor:                      inherit;
+}
+
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+/*****----- Message -----*****/
+message {
+    background-color:            transparent;
+    border:0px;
+    margin:20px 0px 0px 0px;
+    padding:0px;
+    spacing:0px;
+    border-radius: 10px;
+}
+
+textbox {
+    padding:                     15px;
+    margin:                      0px;
+    border-radius:               0px;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+error-message {
+    padding:                     15px;
+    border-radius:               0px;
 }
