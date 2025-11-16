@@ -1,0 +1,150 @@
+{
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "height": 36, // Waybar height (to be removed for auto height)
+//  "width": 1280,
+  "spacing": 4, // Gaps between modules (4px)
+  // Choose the order of the modules
+  "modules-left": [
+    "niri/workspaces",
+    "idle_inhibitor",
+    "pulseaudio",
+    "network",
+    "custom/updates"
+  ],
+  "modules-center": [
+    "niri/window"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "temperature",
+    "tray",
+    "clock",
+    "custom/exit"
+  ],
+  // Modules configuration
+  "niri/workspaces": {
+    "disable-scroll": true,
+    "on-click": "activate",
+    "all-outputs": true,
+    "format": "{}",
+    "persistent-workspaces": {
+      "*": 4
+    }
+  },
+  "keyboard-state": {
+    "capslock": true,
+    "format": "{icon}",
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  },
+  "niri/window": {
+    "max-length": 50,
+    "separate-outputs": true
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "tray": {
+    // "icon-size": 21,
+    "spacing": 0,
+    "show-passive-items": true
+  },
+  "clock": {
+    // "timezone": "America/New_York",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "cpu": {
+    "format": "{usage}% ",
+    "tooltip": false,
+    "on-click": "foot -e btop"
+  },
+  "memory": {
+    "format": "{}% ",
+    "on-click": "foot -e btop"
+  },
+  "temperature": {
+    "thermal-zone": 2,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C {icon}",
+    "format": "{temperatureC}°C {icon}",
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
+  },
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "network": {
+    "format-wifi": "  {signalStrength}%",
+    "tooltip-format-wifi": "  {ipaddr} via {essid}",
+    "format-ethernet": "{ipaddr}/{cidr}  ",
+    "tooltip-format": "{ifname} via {gwaddr}  ",
+    "format-linked": "{ifname} (No IP)  ",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "on-click": "foot -e nmtui"
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{volume}% {icon}  {format_source}",
+    "format-bluetooth-muted": " {icon}  {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        " ",
+        " "
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "custom/updates": {
+    "format": "{icon} {text}",
+    "return-type": "json",
+    "format-icons": {
+      "has-updates": "󱍷",
+      "updated": "󰂪"
+    },
+    "exec-if": "which waybar-module-pacman-updates",
+    "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns 'JetBrains Mono'"
+  },
+  "custom/exit": {
+    "format": "󰈆",
+    "tooltip-format": "Powermenu",
+    "on-click": "wlogout -b 4",
+    "tooltip": false
+  }
+}
