@@ -6,9 +6,13 @@ environment {
     XDG_CURRENT_DESKTOP "niri"
     XDG_SESSION_TYPE "wayland"
     ELECTRON_OZONE_PLATFORM_HINT "auto"
-    AWT_TOOLKIT "MToolkit"
     _JAVA_AWT_WM_NONREPARENTING "1"
     QT_QPA_PLATFORMTHEME "kde"
+}
+
+cursor {
+ xcursor-theme "breeze_cursors"
+ xcursor-size 24
 }
 
 input {
@@ -29,39 +33,68 @@ input {
     trackpoint {
     }
 
-    focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="10%"
+     workspace-auto-back-and-forth
+
 }
 
-output "DP-1" {
-    mode "3860x2160@143.998"
-    scale 1.4
-    transform "normal"
-    position x=0 y=0
+output "DP-2" {
+  mode "2560x1440"
+  transform "90"
+  position x=0 y=0
+
+  layout {
+    default-column-width {
+        proportion 0.84;
+    }
+
+  }
+
+
 }
+
+output "HDMI-A-1" {
+  mode "3860x2160"
+  transform "normal"
+  position x=1440 y=500
+  layout {
+    default-column-width {
+        proportion 0.333;
+    }
+  }
+
+}
+
+
 
 prefer-no-csd
 
 layout {
-    gaps 16
+    gaps 12
     center-focused-column "never"
     preset-column-widths {
-        proportion 0.33333
         proportion 0.5
+        proportion 0.33333
         proportion 0.66667
     }
 
-    default-column-width { proportion 0.5; }
+    preset-window-heights{
+        proportion 0.5
+        proportion 0.33333
+        proportion 1.0
+    }
+
+
     focus-ring {
         off
-        width 4
-        active-color "#7fc8ff"
+        width 2
+        active-color "#FF0088"
         inactive-color "#505050"
     }
 
     border {
         width 2
-        active-color "#ffc87f"
-        inactive-color "#505050"
+        active-color "#7fc8ff"
         urgent-color "#9b0000"
     }
 
@@ -74,6 +107,7 @@ layout {
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE"
 spawn-at-startup "systemctl" "--user" "import-environment" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP" "XDG_SESSION_TYPE"
+spawn-at-startup "systemctl" "--user" "start" "wayland-custom"
 
 spawn-at-startup "/usr/lib/xdg-desktop-portal-kde"
 spawn-at-startup "/usr/lib/xdg-desktop-portal"
@@ -87,12 +121,11 @@ spawn-at-startup "waybar"
 spawn-at-startup "foot" "--server"
 spawn-at-startup "kwalletd6"
 spawn-at-startup "kime"
-spawn-at-startup "swaybg" "-m" "fill" "-i" "/usr/share/wallpapers/North/contents/images/5120x2880.png"
+spawn-at-startup "swaybg" "-m" "fill" "-i" "/usr/share/wallpapers/MilkyWay/contents/images/5120x2880.png"
 
 spawn-at-startup "swayidle" "-w" \
   "timeout" "600" "swaylock -f" \
   "timeout" "610" "niri msg action power-off-monitors" \
-  "timeout" "615" "systemctl suspend" \
   "before-sleep" "swaylock -f"
 
 hotkey-overlay {
@@ -105,35 +138,47 @@ animations {
 }
 
 window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
-}
-
-window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
-/-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-    block-out-from "screen-capture"
-
-    // Use this instead if you want them visible on third-party screenshot tools.
-    // block-out-from "screencast"
+window-rule {
+    match app-id=r#"^org\.kde\.dolphin$"#
+    open-floating true
+    tiled-state true
 }
 
 window-rule {
-    geometry-corner-radius 12 
-    clip-to-geometry true
+    match app-id=r#"^xdg-desktop-portal.*"#
+    open-floating true
+}
+
+window-rule {
+    match is-floating=true
+
+    border {
+      width 2
+      inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        off
+        color "#7d0d2d70"
+    }
+}
+
+
+window-rule {
+    geometry-corner-radius 0
+    clip-to-geometry false
 }
 
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "foot"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "konsole"; }
     Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "rofi -show drun"; }
+    //Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "fuzzel --lines 8"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
@@ -162,23 +207,23 @@ binds {
 
     Mod+Q repeat=false { close-window; }
 
-    Mod+Left  { focus-column-left; }
-    Mod+Down  { focus-window-down; }
-    Mod+Up    { focus-window-up; }
-    Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+    Mod+Left  { focus-column-or-monitor-left; }
+    Mod+Down  { focus-window-or-workspace-down; }
+    Mod+Up    { focus-window-or-workspace-up; }
+    Mod+Right { focus-column-or-monitor-right; }
+    Mod+H     { focus-column-or-monitor-left; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
+    Mod+L     { focus-column-or-monitor-right; }
 
-    Mod+Ctrl+Left  { move-column-left; }
-    Mod+Ctrl+Down  { move-window-down; }
-    Mod+Ctrl+Up    { move-window-up; }
-    Mod+Ctrl+Right { move-column-right; }
-    Mod+Ctrl+H     { move-column-left; }
-    Mod+Ctrl+J     { move-window-down; }
-    Mod+Ctrl+K     { move-window-up; }
-    Mod+Ctrl+L     { move-column-right; }
+    Mod+Shift+Left  { move-column-left; }
+    Mod+Shift+Down  { move-window-down; }
+    Mod+Shift+Up    { move-window-up; }
+    Mod+Shift+Right { move-column-right; }
+    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+J     { move-window-down-or-to-workspace-down; }
+    Mod+Shift+K     { move-window-up-or-to-workspace-up; }
+    Mod+Shift+L     { move-column-right; }
 
     // Alternative commands that move across workspaces when reaching
     // the first or last window in a column.
@@ -192,14 +237,13 @@ binds {
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
-    Mod+Shift+Left  { focus-monitor-left; }
-    Mod+Shift+Down  { focus-monitor-down; }
-    Mod+Shift+Up    { focus-monitor-up; }
-    Mod+Shift+Right { focus-monitor-right; }
-    Mod+Shift+H     { focus-monitor-left; }
-    Mod+Shift+J     { focus-monitor-down; }
-    Mod+Shift+K     { focus-monitor-up; }
-    Mod+Shift+L     { focus-monitor-right; }
+    Mod+Ctrl+Left  { focus-monitor-left; }
+    Mod+Ctrl+Down  { move-column-to-workspace-down; }
+    Mod+Ctrl+Up    { move-column-to-workspace-up; }
+    Mod+Ctrl+Right { focus-monitor-right; }
+    Mod+Ctrl+H     { focus-monitor-left; }
+    Mod+Ctrl+K     { move-column-to-workspace-up; }
+    Mod+Ctrl+L     { focus-monitor-right; }
 
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
@@ -242,22 +286,22 @@ binds {
     // To avoid scrolling through workspaces really fast, you can use
     // the cooldown-ms property. The bind will be rate-limited to this value.
     // You can set a cooldown on any bind, but it's most useful for the wheel.
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
-    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    //Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    //Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Shift+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Shift+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
 
-    Mod+WheelScrollRight      { focus-column-right; }
-    Mod+WheelScrollLeft       { focus-column-left; }
-    Mod+Ctrl+WheelScrollRight { move-column-right; }
-    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+    //Mod+WheelScrollRight      { focus-column-right; }
+    //Mod+WheelScrollLeft       { focus-column-left; }
+    //Mod+Ctrl+WheelScrollRight { move-column-right; }
+    //Mod+Ctrl+WheelScrollLeft  { move-column-left; }
 
     // Usually scrolling up and down with Shift in applications results in
     // horizontal scrolling; these binds replicate that.
-    Mod+Shift+WheelScrollDown      { focus-column-right; }
-    Mod+Shift+WheelScrollUp        { focus-column-left; }
-    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
-    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+    Mod+WheelScrollDown      { focus-column-right; }
+    Mod+WheelScrollUp        { focus-column-left; }
+    //Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    //Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
     // Similarly, you can bind touchpad scroll "ticks".
     // Touchpad scrolling is continuous, so for these binds it is split into
@@ -320,8 +364,8 @@ binds {
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
 
-    // Expand the focused column to space not taken up by other fully visible columns.
-    // Makes the column "fill the rest of the space".
+    //
+    // Expand the focused column to space not taken up by other fully visible columns. Makes the column "fill the rest of the space".
     Mod+Ctrl+F { expand-column-to-available-width; }
 
     Mod+C { center-column; }
@@ -362,8 +406,11 @@ binds {
     // Mod+Shift+Space { switch-layout "prev"; }
 
     Print { screenshot; }
+    Mod+S { screenshot; }
     Ctrl+Print { screenshot-screen; }
+    Mod+Ctrl+S { screenshot-screen; }
     Alt+Print { screenshot-window; }
+    Mod+Alt+S { screenshot-window; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
@@ -379,7 +426,6 @@ binds {
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
 
-    // Powers off the monitors. To turn them back on, do any input like
-    // moving the mouse or pressing any other key.
-    // Mod+Shift+P { power-off-monitors; }
+
 }
+
