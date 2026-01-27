@@ -438,10 +438,10 @@ def main():
         # 기본 동작: 도움말 표시
         parser.print_help()
         print(f"\n{Colors.BLUE}Quick Start:{Colors.RESET}")
-        print(f"  scratchpad.py -s           # Send current window to scratchpad")
-        print(f"  scratchpad.py -l           # List scratchpad contents")
-        print(f"  scratchpad.py -l -b        # Browse and restore via menu")
-        print(f"  scratchpad.py --count      # Show scratchpad window count")
+        print("  scratchpad.py -s           # Send current window to scratchpad")
+        print("  scratchpad.py -l           # List scratchpad contents")
+        print("  scratchpad.py -l -b        # Browse and restore via menu")
+        print("  scratchpad.py --count      # Show scratchpad window count")
 
 
 if __name__ == "__main__":

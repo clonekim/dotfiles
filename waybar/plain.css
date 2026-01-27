@@ -31,12 +31,12 @@
   box-shadow: none;
 }
 
-#waybar {
-  font-family: "Inconsolata", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-  font-size: 1.2em;
+#waybar, #taskbar {
+  font-family: "JetBrainsMono Nerd Font", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.0em;
   font-weight: 400;
   color: @base04;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(10,10,10,0.9);
   border-bottom: 0px solid #ffffff;
 }
 
@@ -45,7 +45,7 @@
 }
 
 #workspaces button {
-  margin: 4px 2px;
+  margin: 4px 0;
   padding: 0 6px;
   color: @base05;
 }
@@ -55,19 +55,41 @@
 
 #workspaces button.active {
   font-size: 1.1em;
-  color: @base06;
+  font-weight: 800;
+  color: @base0F;
   border-radius: 4px;
+  background-color: @base00;
 }
 
 #workspaces button.focused {
   border-radius: 4px;
-  background-color: @base02;
+  background-color: @backgroundlight;
 }
 
 
 #workspaces button.urgent {
   color: rgba(238, 46, 36, 1);
+  text-shadow: 0 0 10px #ff3030;
+  box-shadow: 0 0 15px rgba(255, 48, 48, 0.4);
+
 }
+
+#taksbar {
+    background-color: rgba(0,0,0, 0.0)
+}
+
+
+#taskbar button {
+  margin: 4px 2px;
+  padding: 0 6px;
+    background-color: transparent;
+  border-radius: 4px;
+}
+
+#taskbar button.activce {
+    background-color: @base0A;
+}
+
 
 #tray {
   font-size: 1.0em;
@@ -91,7 +113,7 @@
 }
 
 
-#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #custom-updates, #clock, #temperature, #language {
+#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #custom-updates, #clock, #temperature, #language, #custom-scratchpad {
   margin: 4px 2px;
   padding: 0 6px;
   background-color: @base02;
@@ -99,6 +121,22 @@
   min-width: 20px;
 }
 
+#submap, #custom-capslock {
+  color: #eb4d4b;
+}
+
+#pulseaudio.muted {
+  color: @base0F;
+}
+
+#pulseaudio.bluetooth {
+  color: @base0C;
+}
+
+/* 시계 스타일 */
+#clock {
+    color: #00ffff;
+}
 
 #custom-exit {
   margin: 4px 2px;
@@ -133,5 +171,22 @@ window#waybar.empty #window {
   background: @backgroundlight;
 }
 
+#cpu {
+    color: #ebcb8b;
+}
 
+#memory {
+    color: #b48ead;
+}
 
+#network {
+    color: #8fbcbb;
+}
+
+#pulseaudio {
+    color: #d08770;
+}
+
+#pulseaudio.muted {
+    color: #606060;
+}

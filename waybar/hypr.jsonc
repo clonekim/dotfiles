@@ -34,9 +34,6 @@
     "on-click": "activate",
     "all-outputs": true,
     "format": "{}",
-    "persistent-workspaces": {
-      "*": 4
-    }
   },
   "keyboard-state": {
     "capslock": true,
@@ -219,7 +216,7 @@
     "escape": true
   },
   "custom/updates": {
-    "format": "{} {icon}",
+    "format": "{icon} {text}",
     "return-type": "json",
     "format-icons": {
       "has-updates": "󱍷",

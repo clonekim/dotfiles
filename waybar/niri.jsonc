@@ -2,23 +2,26 @@
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
   "height": 36, // Waybar height (to be removed for auto height)
-//  "width": 1280,
+  // "width": 1280, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": [
     "niri/workspaces",
     "idle_inhibitor",
     "pulseaudio",
+    "backlight",
     "network",
     "custom/updates"
   ],
   "modules-center": [
-    "niri/window"
+    "niri/window",
+    "mdp"
   ],
   "modules-right": [
     "cpu",
     "memory",
     "temperature",
+    "battery",
     "tray",
     "clock",
     "custom/exit"
@@ -27,11 +30,8 @@
   "niri/workspaces": {
     "disable-scroll": true,
     "on-click": "activate",
-    "all-outputs": true,
+    "all-outputs": false,
     "format": "{}",
-    "persistent-workspaces": {
-      "*": 4
-    }
   },
   "keyboard-state": {
     "capslock": true,
@@ -44,6 +44,36 @@
   "niri/window": {
     "max-length": 50,
     "separate-outputs": true
+  },
+  "niri/language": {
+    "format": "{}",
+    "max-length": 18
+  },
+  "mpd": {
+    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    "unknown-tag": "N/A",
+    "interval": 2,
+    "consume-icons": {
+      "on": " "
+    },
+    "random-icons": {
+      "off": "<span color=\"#f53c3c\"></span> ",
+      "on": " "
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": "1 "
+    },
+    "state-icons": {
+      "paused": "",
+      "playing": ""
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
   },
   "idle_inhibitor": {
     "format": "{icon}",
@@ -98,6 +128,29 @@
       ""
     ]
   },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon} ",
+    "format-charging": "{capacity}% 🗲",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "battery#bat2": {
+    "bat": "BAT2"
+  },
   "network": {
     "format-wifi": "  {signalStrength}%",
     "tooltip-format-wifi": "  {ipaddr} via {essid}",
@@ -139,10 +192,10 @@
       "updated": "󰂪"
     },
     "exec-if": "which waybar-module-pacman-updates",
-    "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns 'JetBrains Mono'"
+    "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300 --tooltip-align-columns 'Source Code Pro'"
   },
   "custom/exit": {
-    "format": "󰈆",
+    "format": "",
     "tooltip-format": "Powermenu",
     "on-click": "wlogout -b 4",
     "tooltip": false

@@ -13,8 +13,8 @@
 }
 
 #waybar {
-  font-family: "GohuFont 14 Nerd Font", FontAwesome, monospace;
-  font-size: 1.2em;
+  font-family: FontAwesome, monospace;
+  font-size: 1.0em;
   font-weight: 400;
   color: @cyber-cyan;
   background: linear-gradient(90deg,
@@ -36,11 +36,6 @@
 #workspaces button {
   margin: 2px;
   padding: 4px 8px;
-  color: rgba(0, 255, 255, 0.7);
-  background: transparent;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
 }
 
 #workspaces button.visible {
@@ -52,7 +47,7 @@
   font-size: 1.1em;
   font-weight: 800;
   color: @cyber-pink;
-  border-radius: 27px;
+  border-radius: 6px;
   background: linear-gradient(135deg,
     rgba(255, 0, 255, 0.2) 0%,
     rgba(128, 0, 255, 0.2) 100%
@@ -64,6 +59,7 @@
 
 #workspaces button.focused {
   border-radius: 6px;
+  color: @cyber-cyan;
   background: linear-gradient(135deg,
     rgba(0, 255, 255, 0.2) 0%,
     rgba(0, 255, 128, 0.2) 100%
