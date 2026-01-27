@@ -1,0 +1,12 @@
+
+[Unit]
+Description=Run per-session startup scripts
+After=graphical-session.target
+Wants=graphical-session.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.config/systemd/user/waybar-select.sh
+
+[Install]
+WantedBy=default.target
